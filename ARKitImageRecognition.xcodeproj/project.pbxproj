@@ -18,6 +18,8 @@
 		63B119282060F29400A7E3BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B119272060F29400A7E3BD /* Assets.xcassets */; };
 		63B1192B2060F29400A7E3BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B119292060F29400A7E3BD /* LaunchScreen.storyboard */; };
 		E83BE48120C5D912007AB00F /* cardboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E83BE48020C5D911007AB00F /* cardboard.jpg */; };
+		E83BE48320C5DD8E007AB00F /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83BE48220C5DD8E007AB00F /* Box.swift */; };
+		E83BE48720C5E0CF007AB00F /* normalmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E83BE48620C5E0CF007AB00F /* normalmap.jpg */; };
 		E8E38EAD20C5BDBA0067E60B /* boxinv.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8E38EAC20C5BDBA0067E60B /* boxinv.scn */; };
 		E8E38EAF20C5C7760067E60B /* Light.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8E38EAE20C5C7760067E60B /* Light.scn */; };
 		E8FF06F520C57042003FB84E /* Propeller.dae in Resources */ = {isa = PBXBuildFile; fileRef = E8FF06F420C57042003FB84E /* Propeller.dae */; };
@@ -39,6 +41,8 @@
 		63B1192A2060F29400A7E3BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63B1192C2060F29500A7E3BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E83BE48020C5D911007AB00F /* cardboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cardboard.jpg; sourceTree = "<group>"; };
+		E83BE48220C5DD8E007AB00F /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		E83BE48620C5E0CF007AB00F /* normalmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = normalmap.jpg; path = ../../../normalmap.jpg; sourceTree = "<group>"; };
 		E8E38EAC20C5BDBA0067E60B /* boxinv.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = boxinv.scn; sourceTree = "<group>"; };
 		E8E38EAE20C5C7760067E60B /* Light.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Light.scn; sourceTree = "<group>"; };
 		E8FF06F420C57042003FB84E /* Propeller.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Propeller.dae; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 				E83BE48020C5D911007AB00F /* cardboard.jpg */,
 				E8E38EAC20C5BDBA0067E60B /* boxinv.scn */,
 				E8E38EAE20C5C7760067E60B /* Light.scn */,
+				E83BE48620C5E0CF007AB00F /* normalmap.jpg */,
 			);
 			path = "3D Models";
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				632171E2207C9ED700A39F41 /* 3D Models */,
 				63B119202060F29400A7E3BD /* AppDelegate.swift */,
 				63B119222060F29400A7E3BD /* ViewController.swift */,
+				E83BE48220C5DD8E007AB00F /* Box.swift */,
 				63B119242060F29400A7E3BD /* Main.storyboard */,
 				63B119272060F29400A7E3BD /* Assets.xcassets */,
 				63B119292060F29400A7E3BD /* LaunchScreen.storyboard */,
@@ -199,6 +205,7 @@
 				63B1192B2060F29400A7E3BD /* LaunchScreen.storyboard in Resources */,
 				E8FF06FE20C58ABB003FB84E /* box.scn in Resources */,
 				63217230207CD49400A39F41 /* book.scn in Resources */,
+				E83BE48720C5E0CF007AB00F /* normalmap.jpg in Resources */,
 				E8E38EAF20C5C7760067E60B /* Light.scn in Resources */,
 				63217231207CD49D00A39F41 /* tree.scn in Resources */,
 				E8E38EAD20C5BDBA0067E60B /* boxinv.scn in Resources */,
@@ -220,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E83BE48320C5DD8E007AB00F /* Box.swift in Sources */,
 				63B119232060F29400A7E3BD /* ViewController.swift in Sources */,
 				63B119212060F29400A7E3BD /* AppDelegate.swift in Sources */,
 			);

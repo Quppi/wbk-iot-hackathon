@@ -128,13 +128,17 @@ class ViewController: UIViewController {
         light.type = SCNLight.LightType.spot
         light.spotInnerAngle = 50.0
         light.spotOuterAngle = 80.0
-        light.shadowRadius = 0.3
-        
+        light.shadowRadius = 10
+        light.zNear = 0.1
+        light.shadowColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        light.zFar = 100
+        light.shadowMapSize = CGSize(width: 3000.0, height: 3000.0)
+        //light.shadowMode = .modulated
         light.castsShadow = true
         
         let lightNode = SCNNode()
         
-        lightNode.position = SCNVector3(0, 0.5, 0)
+        lightNode.position = SCNVector3(0, 0, 0.3)
         lightNode.light = light
         
         sceneView.pointOfView!.addChildNode(lightNode)

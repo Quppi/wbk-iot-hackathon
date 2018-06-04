@@ -17,6 +17,7 @@
 		63B119262060F29400A7E3BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B119242060F29400A7E3BD /* Main.storyboard */; };
 		63B119282060F29400A7E3BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B119272060F29400A7E3BD /* Assets.xcassets */; };
 		63B1192B2060F29400A7E3BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B119292060F29400A7E3BD /* LaunchScreen.storyboard */; };
+		E83BE48120C5D912007AB00F /* cardboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E83BE48020C5D911007AB00F /* cardboard.jpg */; };
 		E8E38EAD20C5BDBA0067E60B /* boxinv.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8E38EAC20C5BDBA0067E60B /* boxinv.scn */; };
 		E8E38EAF20C5C7760067E60B /* Light.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8E38EAE20C5C7760067E60B /* Light.scn */; };
 		E8FF06F520C57042003FB84E /* Propeller.dae in Resources */ = {isa = PBXBuildFile; fileRef = E8FF06F420C57042003FB84E /* Propeller.dae */; };
@@ -37,6 +38,7 @@
 		63B119272060F29400A7E3BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63B1192A2060F29400A7E3BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63B1192C2060F29500A7E3BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E83BE48020C5D911007AB00F /* cardboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cardboard.jpg; sourceTree = "<group>"; };
 		E8E38EAC20C5BDBA0067E60B /* boxinv.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = boxinv.scn; sourceTree = "<group>"; };
 		E8E38EAE20C5C7760067E60B /* Light.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Light.scn; sourceTree = "<group>"; };
 		E8FF06F420C57042003FB84E /* Propeller.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Propeller.dae; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				632171EC207CA01300A39F41 /* Mountain */,
 				632171E3207C9EF300A39F41 /* Tree */,
 				E8FF06FD20C58ABB003FB84E /* box.scn */,
+				E83BE48020C5D911007AB00F /* cardboard.jpg */,
 				E8E38EAC20C5BDBA0067E60B /* boxinv.scn */,
 				E8E38EAE20C5C7760067E60B /* Light.scn */,
 			);
@@ -206,6 +209,7 @@
 				6321720A207CAAA000A39F41 /* book.jpg in Resources */,
 				E8FF06F520C57042003FB84E /* Propeller.dae in Resources */,
 				63217221207CCCED00A39F41 /* tree.png in Resources */,
+				E83BE48120C5D912007AB00F /* cardboard.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

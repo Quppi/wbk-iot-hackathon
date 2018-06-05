@@ -15,7 +15,6 @@
 		63B119212060F29400A7E3BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B119202060F29400A7E3BD /* AppDelegate.swift */; };
 		63B119232060F29400A7E3BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B119222060F29400A7E3BD /* ViewController.swift */; };
 		63B119262060F29400A7E3BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B119242060F29400A7E3BD /* Main.storyboard */; };
-		63B119282060F29400A7E3BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B119272060F29400A7E3BD /* Assets.xcassets */; };
 		63B1192B2060F29400A7E3BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B119292060F29400A7E3BD /* LaunchScreen.storyboard */; };
 		E83BE48120C5D912007AB00F /* cardboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E83BE48020C5D911007AB00F /* cardboard.jpg */; };
 		E83BE48320C5DD8E007AB00F /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83BE48220C5DD8E007AB00F /* Box.swift */; };
@@ -30,6 +29,7 @@
 		E83BE49920C5F8E5007AB00F /* Wheel.scn in Resources */ = {isa = PBXBuildFile; fileRef = E83BE49820C5F8E5007AB00F /* Wheel.scn */; };
 		E83BE49B20C5F8FC007AB00F /* Drone.scn in Resources */ = {isa = PBXBuildFile; fileRef = E83BE49A20C5F8FC007AB00F /* Drone.scn */; };
 		E83BE49D20C5F906007AB00F /* Exhaust.scn in Resources */ = {isa = PBXBuildFile; fileRef = E83BE49C20C5F906007AB00F /* Exhaust.scn */; };
+		E83BE49F20C61479007AB00F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E83BE49E20C61479007AB00F /* Assets.xcassets */; };
 		E8E38EAD20C5BDBA0067E60B /* boxinv.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8E38EAC20C5BDBA0067E60B /* boxinv.scn */; };
 		E8E38EAF20C5C7760067E60B /* Light.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8E38EAE20C5C7760067E60B /* Light.scn */; };
 		E8FF06F920C57143003FB84E /* Propeller.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8FF06F820C57143003FB84E /* Propeller.scn */; };
@@ -45,7 +45,6 @@
 		63B119202060F29400A7E3BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B119222060F29400A7E3BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63B119252060F29400A7E3BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		63B119272060F29400A7E3BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63B1192A2060F29400A7E3BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63B1192C2060F29500A7E3BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E83BE48020C5D911007AB00F /* cardboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cardboard.jpg; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		E83BE49820C5F8E5007AB00F /* Wheel.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Wheel.scn; sourceTree = "<group>"; };
 		E83BE49A20C5F8FC007AB00F /* Drone.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Drone.scn; sourceTree = "<group>"; };
 		E83BE49C20C5F906007AB00F /* Exhaust.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Exhaust.scn; sourceTree = "<group>"; };
+		E83BE49E20C61479007AB00F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8E38EAC20C5BDBA0067E60B /* boxinv.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = boxinv.scn; sourceTree = "<group>"; };
 		E8E38EAE20C5C7760067E60B /* Light.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Light.scn; sourceTree = "<group>"; };
 		E8FF06F820C57143003FB84E /* Propeller.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Propeller.scn; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 				63B119222060F29400A7E3BD /* ViewController.swift */,
 				E83BE48220C5DD8E007AB00F /* Box.swift */,
 				63B119242060F29400A7E3BD /* Main.storyboard */,
-				63B119272060F29400A7E3BD /* Assets.xcassets */,
 				63B119292060F29400A7E3BD /* LaunchScreen.storyboard */,
+				E83BE49E20C61479007AB00F /* Assets.xcassets */,
 				63B1192C2060F29500A7E3BD /* Info.plist */,
 			);
 			path = ARKitImageRecognition;
@@ -230,6 +230,7 @@
 				63217230207CD49400A39F41 /* book.scn in Resources */,
 				E83BE48D20C5EBF5007AB00F /* Playstation 2.dae in Resources */,
 				E83BE49D20C5F906007AB00F /* Exhaust.scn in Resources */,
+				E83BE49F20C61479007AB00F /* Assets.xcassets in Resources */,
 				E83BE48720C5E0CF007AB00F /* normalmap.jpg in Resources */,
 				E83BE49720C5F8C7007AB00F /* Wheel.dae in Resources */,
 				E83BE49B20C5F8FC007AB00F /* Drone.scn in Resources */,
@@ -240,7 +241,6 @@
 				E8E38EAD20C5BDBA0067E60B /* boxinv.scn in Resources */,
 				E83BE49120C5EC8F007AB00F /* Playstation 2.scn in Resources */,
 				6321721D207CCAD300A39F41 /* mountain.scn in Resources */,
-				63B119282060F29400A7E3BD /* Assets.xcassets in Resources */,
 				E8FF06F920C57143003FB84E /* Propeller.scn in Resources */,
 				63B119262060F29400A7E3BD /* Main.storyboard in Resources */,
 				E83BE49520C5F8C1007AB00F /* Drone.dae in Resources */,

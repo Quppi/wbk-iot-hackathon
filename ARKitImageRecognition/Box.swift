@@ -47,6 +47,11 @@ let fastSpinAction: SCNAction = {
         .rotateBy(x: 0, y: 10, z: 0, duration: 0.5)
     )
 }()
+let fastSpinRotor: SCNAction = {
+    return .repeatForever(
+        .rotateBy(x: 0, y: 0, z: 10, duration: 0.5)
+    )
+}()
 
 class Models {
     static let None = SCNNode()
@@ -55,31 +60,37 @@ class Models {
         interiorNode.runAction(spinAction)
         return Box(interior: interiorNode,
            scaleObject: SCNVector3(0.05, 0.05, 0.05),
-           scaleBox: SCNVector3(0.215, 0.215, 0.285)).node
+           scaleBox: SCNVector3(0.285, 0.215, 0.215)).node
     }()
     
     static let PS2 : SCNNode = {
         let interiorNode = SCNScene(named: "Playstation 2.scn")!.rootNode
         //interiorNode.runAction(spinAction)
+        interiorNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
         return Box(interior: interiorNode,
-                   scaleObject: SCNVector3(0.023, 0.023, 0.023),
-                   scaleBox: SCNVector3(0.195, 0.063, 0.23)).node
+                   scaleObject: SCNVector3(0.04, 0.04, 0.04),
+                   scaleBox: SCNVector3(0.31, 0.115, 0.24)).node
     }()
     
     static let Drone : SCNNode = {
         let interiorNode = SCNScene(named: "Drone.scn")!.rootNode
+        let rotorL = interiorNode.childNode(withName: "Rotor_L", recursively: true)
+        let rotorR = interiorNode.childNode(withName: "Rotor_R", recursively: true)
+        rotorL?.runAction(fastSpinRotor)
+        rotorR?.runAction(fastSpinRotor)
         //interiorNode.runAction(spinAction)
+        interiorNode.eulerAngles = SCNVector3(-90, 0, 0)
         return Box(interior: interiorNode,
-                   scaleObject: SCNVector3(0.23, 0.23, 0.23),
-                   scaleBox: SCNVector3(0.195, 0.063, 0.23)).node
+                   scaleObject: SCNVector3(0.3, 0.3, 0.3),
+                   scaleBox: SCNVector3(0.325, 0.175, 0.25)).node
     }()
     
     static let Zahnrad : SCNNode = {
         let interiorNode = SCNScene(named: "Zahnrad.scn")!.rootNode
         interiorNode.runAction(spinAction)
         return Box(interior: interiorNode,
-                   scaleObject: SCNVector3(0.05, 0.05, 0.05),
-                   scaleBox: SCNVector3(0.215, 0.215, 0.285)).node
+                   scaleObject: SCNVector3(0.04, 0.04, 0.04),
+                   scaleBox: SCNVector3(0.255, 0.192, 0.303)).node
     }()
     
     static let Exhaust : SCNNode = {

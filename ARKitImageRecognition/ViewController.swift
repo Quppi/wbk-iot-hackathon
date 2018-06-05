@@ -131,19 +131,22 @@ extension ViewController: ARSCNViewDelegate {
         var node = SCNNode()
         switch name {
         case "qr-code-1":
-            node = Models.None
+            node = Models.Drone
             break
         case "qr-code-2":
-            node = Models.None
+            node = Models.Exhaust
             break
         case "qr-code-3":
-            node = Models.None
+            node = Models.Propeller
             break
         case "qr-code-4":
-            node = Models.None
+            node = Models.PS2
             break
         case "qr-code-5":
-            node = Models.None
+            node = Models.Wheel
+            break
+        case "qr-code-6":
+            node = Models.Zahnrad
             break
         default:
             break

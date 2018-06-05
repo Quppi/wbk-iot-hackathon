@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         }
         configureLighting()
         setupHighlightGesture()
-        httpTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(makeRequest), userInfo: nil, repeats: true)
+        httpTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(makeRequest), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,9 +88,9 @@ class ViewController: UIViewController {
     @objc func makeRequest() {
         do {
             let url = URL(string: "http://172.20.10.2")
-            var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 500000.0)
+            let request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 500000.0)
 //            request.httpMethod = "Get"
-            try URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
+            URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
                 guard let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) else {return}
                 print("Result: \(string)")
                 var dic = self.convertToDictionary(text: string as String)!
@@ -98,6 +98,9 @@ class ViewController: UIViewController {
                     let dataSource = self.createDataSeries(values: [[dic["temperatur"]! as! Double], [dic["licht"]! as! Double / 100], [dic["kaputt_val"]! as! Double / 100]])
                     ViewController.barChart?.dataSource = dataSource
                     ViewController.barChart?.delegate = dataSource
+                    for n in ViewController.barChart!.childNodes {
+                        n.removeFromParentNode()
+                    }
                     ViewController.barChart?.draw()
                     if dic["kaputt"]! as! Int == 1 {
                         Models.Warn.isHidden = false
@@ -105,8 +108,6 @@ class ViewController: UIViewController {
                         Models.Warn.isHidden = true
                     }
                 }
-                
-                
             }).resume()
         } catch is Any {
             return
@@ -222,7 +223,7 @@ extension ViewController {
     }
     
     private func setupGraph() {
-        ViewController.barChart!.animationType = settings.animationType
+        ViewController.barChart!.animationType = nil
         ViewController.barChart!.size = SCNVector3(settings.graphWidth, settings.graphHeight, settings.graphLength)
     }
     
@@ -231,7 +232,7 @@ extension ViewController {
         var labelToHighlight: ARChartLabel?
         
         let animationStyle = settings.longPressAnimationType
-        let animationDuration = 0.3
+        let animationDuration = 0.0
         let longPressLocation = gestureRecognizer.location(in: self.view)
         let selectedNode = self.sceneView.hitTest(longPressLocation, options: nil).first?.node
         if let barNode = selectedNode as? ARBarChartBar {

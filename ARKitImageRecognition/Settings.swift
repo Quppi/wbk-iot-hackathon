@@ -15,11 +15,11 @@ struct Settings {
     var longPressAnimationType : ARChartHighlighter.AnimationStyle = .shrink
     var barOpacity: Float = 1.0
     var showLabels = true
-    var numberOfSeries = 10
-    var numberOfIndices = 10
-    var graphWidth: Float = 0.3
-    var graphHeight: Float = 0.3
-    var graphLength: Float = 0.3
+    var numberOfSeries = 1
+    var numberOfIndices = 5
+    var graphWidth: Float = 0.02
+    var graphHeight: Float = 0.1
+    var graphLength: Float = 0.1
     var dataSet: Int = 0
     
     public func index(forEntranceAnimationType animationType: ARChartPresenter.AnimationType?) -> Int {

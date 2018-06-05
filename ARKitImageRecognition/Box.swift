@@ -52,6 +52,13 @@ let fastSpinRotor: SCNAction = {
         .rotateBy(x: 0, y: 0, z: 10, duration: 0.5)
     )
 }()
+let blinkAction: SCNAction = {
+    return .repeatForever(.sequence([
+        .fadeIn(duration: 1),
+        .fadeOut(duration: 1),
+        .wait(duration: 0.5)
+    ]))
+}()
 
 class Models {
     static let None = SCNNode()
@@ -89,11 +96,28 @@ class Models {
         let interiorNode = SCNScene(named: "Zahnrad.scn")!.rootNode
         let anotherShitNode = SCNNode()
         anotherShitNode.addChildNode(interiorNode)
-        anotherShitNode.addChildNode(ViewController.barChart!)
+        interiorNode.scale = SCNVector3(0.04, 0.04, 0.04)
+        let chart = ViewController.barChart!
+        chart.eulerAngles = SCNVector3(Float.pi / -2,0,Float.pi / -2)
+        chart.position = SCNVector3(0.075, 0.08, 0.15)
+        chart.scale = SCNVector3(1, 1, 1)
+        anotherShitNode.addChildNode(chart)
+        let warn = Models.Warn
+        anotherShitNode.addChildNode(warn)
         interiorNode.runAction(spinAction)
         return Box(interior: anotherShitNode,
-                   scaleObject: SCNVector3(0.04, 0.04, 0.04),
+                   scaleObject: SCNVector3(1, 1, 1),
                    scaleBox: SCNVector3(0.255, 0.192, 0.303)).node
+    }()
+    
+    static let Warn : SCNNode = {
+        let interiorNode = SCNScene(named: "rund_warn.scn")!.rootNode
+        interiorNode.scale = SCNVector3(0.004, 0.004, 0.004)
+        interiorNode.eulerAngles = SCNVector3(0,Float.pi,0)
+        interiorNode.position = SCNVector3(-0.095, 0.09, -0.09)
+        interiorNode.runAction(blinkAction)
+        interiorNode.isHidden = true
+        return interiorNode
     }()
     
     static let Exhaust : SCNNode = {

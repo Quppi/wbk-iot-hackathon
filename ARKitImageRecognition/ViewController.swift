@@ -12,16 +12,15 @@ import ARCharts
 
 class ViewController: UIViewController {
 
-
+    var httpTimer: Timer!
     static var barChart: ARBarChart?
     private let arKitColors = [
-        UIColor(red: 238.0 / 255.0, green: 109.0 / 255.0, blue: 150.0 / 255.0, alpha: 1.0),
-        UIColor(red: 70.0  / 255.0, green: 150.0 / 255.0, blue: 150.0 / 255.0, alpha: 1.0),
-        UIColor(red: 134.0 / 255.0, green: 218.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0),
-        UIColor(red: 237.0 / 255.0, green: 231.0 / 255.0, blue: 254.0 / 255.0, alpha: 1.0),
-        UIColor(red: 0.0   / 255.0, green: 110.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0),
-        UIColor(red: 193.0 / 255.0, green: 193.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0),
-        UIColor(red: 84.0  / 255.0, green: 204.0 / 255.0, blue: 254.0 / 255.0, alpha: 1.0)
+        //UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0),
+        UIColor(red: 0.6, green: 0.0, blue: 0.2, alpha: 1.0),
+        UIColor(red: 0.6, green: 0.0, blue: 0.4, alpha: 1.0),
+        UIColor(red: 0.6, green: 0.0, blue: 0.6, alpha: 1.0),
+        UIColor(red: 0.6, green: 0.0, blue: 0.8, alpha: 1.0),
+        UIColor(red: 0.6, green: 0.0, blue: 1.0, alpha: 1.0)
     ]
     var settings = Settings()
     var dataSeries: ARDataSeries!
@@ -72,6 +71,7 @@ class ViewController: UIViewController {
         }
         configureLighting()
         setupHighlightGesture()
+        httpTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(makeRequest), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +85,45 @@ class ViewController: UIViewController {
         sceneView.session.pause()
     }
     
+    @objc func makeRequest() {
+        do {
+            let url = URL(string: "http://172.20.10.2")
+            var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 500000.0)
+//            request.httpMethod = "Get"
+            try URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
+                guard let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) else {return}
+                print("Result: \(string)")
+                var dic = self.convertToDictionary(text: string as String)!
+                DispatchQueue.main.async {
+                    let dataSource = self.createDataSeries(values: [[dic["temperatur"]! as! Double], [dic["licht"]! as! Double / 100], [dic["kaputt_val"]! as! Double / 100]])
+                    ViewController.barChart?.dataSource = dataSource
+                    ViewController.barChart?.delegate = dataSource
+                    ViewController.barChart?.draw()
+                    if dic["kaputt"]! as! Int == 1 {
+                        Models.Warn.isHidden = false
+                    } else {
+                        Models.Warn.isHidden = true
+                    }
+                }
+                
+                
+            }).resume()
+        } catch is Any {
+            return
+        }
+    }
+    
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
+
     func configureLighting() {
         let light = SCNLight()
         light.type = SCNLight.LightType.spot
@@ -226,29 +265,9 @@ extension ViewController {
     func addBarChart() {
       
         var values = generateRandomNumbers(withRange: 0..<50, numberOfRows: settings.numberOfSeries, numberOfColumns: settings.numberOfIndices)
-        var seriesLabels = Array(0..<values.count).map({ "Series \($0)" })
-        var indexLabels = Array(0..<values.first!.count).map({ "Index \($0)" })
         
-        
-        if settings.dataSet > 0 {
-            values = generateNumbers(fromDataSampleWithIndex: settings.dataSet - 1) ?? values
-            seriesLabels = parseSeriesLabels(fromDataSampleWithIndex: settings.dataSet - 1) ?? seriesLabels
-            indexLabels = parseIndexLabels(fromDataSampleWithIndex: settings.dataSet - 1) ?? indexLabels
-        }
-        
-        dataSeries = ARDataSeries(withValues: values)
-        if settings.showLabels {
-            dataSeries?.seriesLabels = seriesLabels
-            dataSeries?.indexLabels = indexLabels
-            dataSeries?.spaceForIndexLabels = 0.2
-            dataSeries?.spaceForIndexLabels = 0.2
-        } else {
-            dataSeries?.spaceForIndexLabels = 0.0
-            dataSeries?.spaceForIndexLabels = 0.0
-        }
-        dataSeries?.barColors = arKitColors
-        dataSeries?.barOpacity = settings.barOpacity
-        
+        dataSeries = createDataSeries(values: [[0], [0], [0]])
+    
         ViewController.barChart = ARBarChart()
         if let barChart = ViewController.barChart {
             barChart.dataSource = dataSeries
@@ -257,6 +276,28 @@ extension ViewController {
 
             barChart.draw()
         }
+    }
+    
+    func createDataSeries(values: [[Double]]) -> ARDataSeries {
+        
+        var seriesLabels = ["T", "L", "E", "", "", ""]
+        var indexLabels = ["", "", "", "", "", ""]
+        let dataSeries = ARDataSeries(withValues: values)
+        
+        dataSeries.barColors = arKitColors
+        dataSeries.barOpacity = settings.barOpacity
+        if settings.showLabels {
+            dataSeries.seriesLabels = seriesLabels
+            dataSeries.indexLabels = indexLabels
+            dataSeries.spaceForIndexLabels = 0.0
+            dataSeries.spaceForSeriesLabels = 0.3
+            
+        } else {
+            dataSeries.spaceForIndexLabels = 0.0
+            dataSeries.spaceForIndexLabels = 0.0
+        }
+        
+        return dataSeries
     }
 
 }

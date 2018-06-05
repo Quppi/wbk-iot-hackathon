@@ -38,6 +38,10 @@
 		E8FF27F120C689CF00DF92A6 /* Frameworks in Resources */ = {isa = PBXBuildFile; fileRef = E8FF27F020C689CF00DF92A6 /* Frameworks */; };
 		E8FF27F320C68ADC00DF92A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF27F220C68ADC00DF92A6 /* Settings.swift */; };
 		E8FF27F520C68C9E00DF92A6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF27F420C68C9E00DF92A6 /* Utilities.swift */; };
+		E8FF27F820C6A02800DF92A6 /* rundes Ausrufezeichen.dae in Resources */ = {isa = PBXBuildFile; fileRef = E8FF27F620C6A02700DF92A6 /* rundes Ausrufezeichen.dae */; };
+		E8FF27F920C6A02800DF92A6 /* Ausrufezeichen.dae in Resources */ = {isa = PBXBuildFile; fileRef = E8FF27F720C6A02800DF92A6 /* Ausrufezeichen.dae */; };
+		E8FF27FB20C6A04700DF92A6 /* rund_warn.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8FF27FA20C6A04700DF92A6 /* rund_warn.scn */; };
+		E8FF27FD20C6A05200DF92A6 /* warn.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8FF27FC20C6A05200DF92A6 /* warn.scn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +77,10 @@
 		E8FF27F020C689CF00DF92A6 /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Frameworks; sourceTree = "<group>"; };
 		E8FF27F220C68ADC00DF92A6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E8FF27F420C68C9E00DF92A6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		E8FF27F620C6A02700DF92A6 /* rundes Ausrufezeichen.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "rundes Ausrufezeichen.dae"; sourceTree = "<group>"; };
+		E8FF27F720C6A02800DF92A6 /* Ausrufezeichen.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Ausrufezeichen.dae; sourceTree = "<group>"; };
+		E8FF27FA20C6A04700DF92A6 /* rund_warn.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = rund_warn.scn; sourceTree = "<group>"; };
+		E8FF27FC20C6A05200DF92A6 /* warn.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = warn.scn; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,10 @@
 				632171E3207C9EF300A39F41 /* Tree */,
 				E83BE48C20C5EBF4007AB00F /* Playstation 2.dae */,
 				E83BE49020C5EC8F007AB00F /* Playstation 2.scn */,
+				E8FF27F720C6A02800DF92A6 /* Ausrufezeichen.dae */,
+				E8FF27FC20C6A05200DF92A6 /* warn.scn */,
+				E8FF27F620C6A02700DF92A6 /* rundes Ausrufezeichen.dae */,
+				E8FF27FA20C6A04700DF92A6 /* rund_warn.scn */,
 				E83BE48820C5EBB1007AB00F /* Zahnrad.dae */,
 				E83BE48E20C5EC71007AB00F /* Zahnrad.scn */,
 				E83BE48020C5D911007AB00F /* cardboard.jpg */,
@@ -263,8 +275,11 @@
 				E83BE48F20C5EC71007AB00F /* Zahnrad.scn in Resources */,
 				63217231207CD49D00A39F41 /* tree.scn in Resources */,
 				E8E38EAD20C5BDBA0067E60B /* boxinv.scn in Resources */,
+				E8FF27FB20C6A04700DF92A6 /* rund_warn.scn in Resources */,
+				E8FF27FD20C6A05200DF92A6 /* warn.scn in Resources */,
 				E83BE49120C5EC8F007AB00F /* Playstation 2.scn in Resources */,
 				6321721D207CCAD300A39F41 /* mountain.scn in Resources */,
+				E8FF27F920C6A02800DF92A6 /* Ausrufezeichen.dae in Resources */,
 				E8FF06F920C57143003FB84E /* Propeller.scn in Resources */,
 				63B119262060F29400A7E3BD /* Main.storyboard in Resources */,
 				E83BE49520C5F8C1007AB00F /* Drone.dae in Resources */,
@@ -273,6 +288,7 @@
 				E83BE49320C5F8B7007AB00F /* Exhaust.dae in Resources */,
 				63217221207CCCED00A39F41 /* tree.png in Resources */,
 				E83BE48120C5D912007AB00F /* cardboard.jpg in Resources */,
+				E8FF27F820C6A02800DF92A6 /* rundes Ausrufezeichen.dae in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

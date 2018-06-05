@@ -8,9 +8,23 @@
 
 import UIKit
 import ARKit
+import ARCharts
 
 class ViewController: UIViewController {
 
+
+    static var barChart: ARBarChart?
+    private let arKitColors = [
+        UIColor(red: 238.0 / 255.0, green: 109.0 / 255.0, blue: 150.0 / 255.0, alpha: 1.0),
+        UIColor(red: 70.0  / 255.0, green: 150.0 / 255.0, blue: 150.0 / 255.0, alpha: 1.0),
+        UIColor(red: 134.0 / 255.0, green: 218.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0),
+        UIColor(red: 237.0 / 255.0, green: 231.0 / 255.0, blue: 254.0 / 255.0, alpha: 1.0),
+        UIColor(red: 0.0   / 255.0, green: 110.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0),
+        UIColor(red: 193.0 / 255.0, green: 193.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0),
+        UIColor(red: 84.0  / 255.0, green: 204.0 / 255.0, blue: 254.0 / 255.0, alpha: 1.0)
+    ]
+    var settings = Settings()
+    var dataSeries: ARDataSeries!
     override open var shouldAutorotate: Bool {
         return false
     }
@@ -57,11 +71,13 @@ class ViewController: UIViewController {
             camera.minimumExposure = -1
         }
         configureLighting()
+        setupHighlightGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetTrackingConfiguration()
+        addBarChart()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -154,4 +170,93 @@ extension ViewController: ARSCNViewDelegate {
         return node
     }
     
+}
+
+extension ViewController {
+    func setupHighlightGesture() {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        self.view.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    private func setupGraph() {
+        ViewController.barChart!.animationType = settings.animationType
+        ViewController.barChart!.size = SCNVector3(settings.graphWidth, settings.graphHeight, settings.graphLength)
+    }
+    
+    @objc func handleLongPress(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard gestureRecognizer.state == .began else { return }
+        var labelToHighlight: ARChartLabel?
+        
+        let animationStyle = settings.longPressAnimationType
+        let animationDuration = 0.3
+        let longPressLocation = gestureRecognizer.location(in: self.view)
+        let selectedNode = self.sceneView.hitTest(longPressLocation, options: nil).first?.node
+        if let barNode = selectedNode as? ARBarChartBar {
+            ViewController.barChart!.highlightBar(atIndex: barNode.index, forSeries: barNode.series, withAnimationStyle: animationStyle, withAnimationDuration: animationDuration)
+        } else if let labelNode = selectedNode as? ARChartLabel {
+            // Detect long press on label text
+            labelToHighlight = labelNode
+        } else if let labelNode = selectedNode?.parent as? ARChartLabel {
+            // Detect long press on label background
+            labelToHighlight = labelNode
+        }
+        
+        if let labelNode = labelToHighlight {
+            switch labelNode.type {
+            case .index:
+                ViewController.barChart!.highlightIndex(labelNode.id, withAnimationStyle: animationStyle, withAnimationDuration: animationDuration)
+            case .series:
+                ViewController.barChart!.highlightSeries(labelNode.id, withAnimationStyle: animationStyle, withAnimationDuration: animationDuration)
+            }
+        }
+        
+        let tapToUnhighlight = UITapGestureRecognizer(target: self, action: #selector(handleTapToUnhighlight(_:)))
+        self.view.addGestureRecognizer(tapToUnhighlight)
+    }
+    
+    @objc func handleTapToUnhighlight(_ gestureRecognizer: UITapGestureRecognizer) {
+        ViewController.barChart!.unhighlight()
+        self.view.removeGestureRecognizer(gestureRecognizer)
+    }
+    
+    func addBarChart() {
+      
+        var values = generateRandomNumbers(withRange: 0..<50, numberOfRows: settings.numberOfSeries, numberOfColumns: settings.numberOfIndices)
+        var seriesLabels = Array(0..<values.count).map({ "Series \($0)" })
+        var indexLabels = Array(0..<values.first!.count).map({ "Index \($0)" })
+        
+        
+        if settings.dataSet > 0 {
+            values = generateNumbers(fromDataSampleWithIndex: settings.dataSet - 1) ?? values
+            seriesLabels = parseSeriesLabels(fromDataSampleWithIndex: settings.dataSet - 1) ?? seriesLabels
+            indexLabels = parseIndexLabels(fromDataSampleWithIndex: settings.dataSet - 1) ?? indexLabels
+        }
+        
+        dataSeries = ARDataSeries(withValues: values)
+        if settings.showLabels {
+            dataSeries?.seriesLabels = seriesLabels
+            dataSeries?.indexLabels = indexLabels
+            dataSeries?.spaceForIndexLabels = 0.2
+            dataSeries?.spaceForIndexLabels = 0.2
+        } else {
+            dataSeries?.spaceForIndexLabels = 0.0
+            dataSeries?.spaceForIndexLabels = 0.0
+        }
+        dataSeries?.barColors = arKitColors
+        dataSeries?.barOpacity = settings.barOpacity
+        
+        ViewController.barChart = ARBarChart()
+        if let barChart = ViewController.barChart {
+            barChart.dataSource = dataSeries
+            barChart.delegate = dataSeries
+            setupGraph()
+
+            barChart.draw()
+        }
+    }
+
 }

@@ -1,0 +1,11 @@
+framework module ARCharts {
+  umbrella header "ARCharts.h"
+
+  export *
+  module * { export * }
+}
+
+module ARCharts.Swift {
+    header "ARCharts-Swift.h"
+    requires objc
+}

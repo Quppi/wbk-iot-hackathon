@@ -87,8 +87,11 @@ class Models {
     
     static let Zahnrad : SCNNode = {
         let interiorNode = SCNScene(named: "Zahnrad.scn")!.rootNode
+        let anotherShitNode = SCNNode()
+        anotherShitNode.addChildNode(interiorNode)
+        anotherShitNode.addChildNode(ViewController.barChart!)
         interiorNode.runAction(spinAction)
-        return Box(interior: interiorNode,
+        return Box(interior: anotherShitNode,
                    scaleObject: SCNVector3(0.04, 0.04, 0.04),
                    scaleBox: SCNVector3(0.255, 0.192, 0.303)).node
     }()

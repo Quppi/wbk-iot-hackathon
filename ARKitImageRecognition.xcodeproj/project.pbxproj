@@ -33,6 +33,11 @@
 		E8E38EAD20C5BDBA0067E60B /* boxinv.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8E38EAC20C5BDBA0067E60B /* boxinv.scn */; };
 		E8E38EAF20C5C7760067E60B /* Light.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8E38EAE20C5C7760067E60B /* Light.scn */; };
 		E8FF06F920C57143003FB84E /* Propeller.scn in Resources */ = {isa = PBXBuildFile; fileRef = E8FF06F820C57143003FB84E /* Propeller.scn */; };
+		E8FF27ED20C6882800DF92A6 /* ARCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8FF27EC20C6882800DF92A6 /* ARCharts.framework */; };
+		E8FF27EE20C688FF00DF92A6 /* ARCharts.framework in Resources */ = {isa = PBXBuildFile; fileRef = E8FF27EC20C6882800DF92A6 /* ARCharts.framework */; };
+		E8FF27F120C689CF00DF92A6 /* Frameworks in Resources */ = {isa = PBXBuildFile; fileRef = E8FF27F020C689CF00DF92A6 /* Frameworks */; };
+		E8FF27F320C68ADC00DF92A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF27F220C68ADC00DF92A6 /* Settings.swift */; };
+		E8FF27F520C68C9E00DF92A6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF27F420C68C9E00DF92A6 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +69,10 @@
 		E8E38EAC20C5BDBA0067E60B /* boxinv.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = boxinv.scn; sourceTree = "<group>"; };
 		E8E38EAE20C5C7760067E60B /* Light.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Light.scn; sourceTree = "<group>"; };
 		E8FF06F820C57143003FB84E /* Propeller.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Propeller.scn; sourceTree = "<group>"; };
+		E8FF27EC20C6882800DF92A6 /* ARCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARCharts.framework; sourceTree = "<group>"; };
+		E8FF27F020C689CF00DF92A6 /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Frameworks; sourceTree = "<group>"; };
+		E8FF27F220C68ADC00DF92A6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E8FF27F420C68C9E00DF92A6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8FF27ED20C6882800DF92A6 /* ARCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +141,8 @@
 		63B119142060F29400A7E3BD = {
 			isa = PBXGroup;
 			children = (
+				E8FF27EF20C6897F00DF92A6 /* Frameworks */,
+				E8FF27F020C689CF00DF92A6 /* Frameworks */,
 				63B1191F2060F29400A7E3BD /* ARKitImageRecognition */,
 				63B1191E2060F29400A7E3BD /* Products */,
 			);
@@ -149,6 +161,8 @@
 			children = (
 				632171E2207C9ED700A39F41 /* 3D Models */,
 				63B119202060F29400A7E3BD /* AppDelegate.swift */,
+				E8FF27F220C68ADC00DF92A6 /* Settings.swift */,
+				E8FF27F420C68C9E00DF92A6 /* Utilities.swift */,
 				63B119222060F29400A7E3BD /* ViewController.swift */,
 				E83BE48220C5DD8E007AB00F /* Box.swift */,
 				63B119242060F29400A7E3BD /* Main.storyboard */,
@@ -165,6 +179,14 @@
 				E8FF06F820C57143003FB84E /* Propeller.scn */,
 			);
 			path = Propeller;
+			sourceTree = "<group>";
+		};
+		E8FF27EF20C6897F00DF92A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8FF27EC20C6882800DF92A6 /* ARCharts.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +248,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8FF27F120C689CF00DF92A6 /* Frameworks in Resources */,
+				E8FF27EE20C688FF00DF92A6 /* ARCharts.framework in Resources */,
 				63B1192B2060F29400A7E3BD /* LaunchScreen.storyboard in Resources */,
 				63217230207CD49400A39F41 /* book.scn in Resources */,
 				E83BE48D20C5EBF5007AB00F /* Playstation 2.dae in Resources */,
@@ -261,6 +285,8 @@
 			files = (
 				E83BE48320C5DD8E007AB00F /* Box.swift in Sources */,
 				63B119232060F29400A7E3BD /* ViewController.swift in Sources */,
+				E8FF27F320C68ADC00DF92A6 /* Settings.swift in Sources */,
+				E8FF27F520C68C9E00DF92A6 /* Utilities.swift in Sources */,
 				63B119212060F29400A7E3BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +431,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BLCUDDDEY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/ARKitImageRecognition/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -421,6 +452,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BLCUDDDEY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/ARKitImageRecognition/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

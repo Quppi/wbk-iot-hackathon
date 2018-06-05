@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         sceneView.delegate = self
         sceneView.showsStatistics = true
-        sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+       // sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
         sceneView.preferredFramesPerSecond = 60
         if let camera = sceneView.pointOfView?.camera {
             camera.wantsHDR = true
@@ -105,14 +105,16 @@ class ViewController: UIViewController {
 
 extension ViewController: ARSCNViewDelegate {
     
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        print(node.position)
-    }
+    //func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+    //    print(node.position)
+    //}
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let imageAnchor = anchor as? ARImageAnchor else { return }
         let referenceImage = imageAnchor.referenceImage
         let imageName = referenceImage.name ?? "no name"
+        
+        print("Creating image \(imageName)")
         
         let overlayNode = self.getNode(withImageName: imageName)
         overlayNode.opacity = 0
@@ -128,16 +130,21 @@ extension ViewController: ARSCNViewDelegate {
     func getNode(withImageName name: String) -> SCNNode {
         var node = SCNNode()
         switch name {
-        case "qrcode-large":
-            node =
-        case "box":
-            node = Models.Propeller
-        case "qrcode-mid":
-            node =
-        case "qrcode-small":
-            node =
-        case "qrcode-small-2":
-            node =
+        case "qr-code-1":
+            node = Models.None
+            break
+        case "qr-code-2":
+            node = Models.None
+            break
+        case "qr-code-3":
+            node = Models.None
+            break
+        case "qr-code-4":
+            node = Models.None
+            break
+        case "qr-code-5":
+            node = Models.None
+            break
         default:
             break
         }
